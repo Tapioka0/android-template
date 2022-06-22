@@ -24,7 +24,7 @@ export const Container = styled.div`
 
   .menuIcon {
     display: flex;
-    margin: 0 auto;
+
     width: 9vh;
     flex-wrap: wrap;
   }
@@ -34,7 +34,7 @@ export const Container = styled.div`
   }
 
   .menuIcon span {
-    margin: 0 0 0 1.1vh;
+    margin: 0 0 0 1vh;
     color: black !important;
     font-weight: 600;
   }

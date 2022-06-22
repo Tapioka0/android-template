@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { GalleryStyle } from "../../styles/Gallery/GalleryStyle";
+import { BackBottom } from "../BottomBack/BackBottom";
 import { GalleryNavbar } from "./GalleryNavbar";
 
 export const Gallery = () => {
@@ -17,6 +18,7 @@ export const Gallery = () => {
           </div>
         ))}
       </div>
+      <BackBottom />
     </GalleryStyle>
   );
 };

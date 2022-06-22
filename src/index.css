@@ -7,6 +7,17 @@
   --headingFont: "Raleway", sans-serif;
   --textFont: "Roboto", sans-serif;
 }
+
+.imagen {
+  position: sticky;
+  margin: 10% 0 0 0;
+}
+.imagen img {
+  height: 5vh;
+  width: 5vh;
+  color: rgb(232, 230, 227);
+}
+
 *,
 *:before,
 *:after {

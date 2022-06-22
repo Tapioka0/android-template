@@ -3,14 +3,21 @@ import diccionario from "../../icons/diccionario.png";
 import folder from "../../icons/folder.png";
 import music from "../../icons/music-note.png";
 import playStore from "../../icons/google-play.png";
+import memrise from "../../icons/memrise.png";
 import { useNavigate } from "react-router";
 export const MainIcons = () => {
   const navigate = useNavigate();
   return (
     <>
       <div className="menuIcon">
-        <img src={folder} alt="Folder" />
-        <span>フォルダー</span>
+        <img
+          src={memrise}
+          alt="Memrise"
+          onClick={() => {
+            navigate("/home/memrise", { replace: true });
+          }}
+        />
+        <span>Memrise</span>
       </div>
 
       <div className="menuIcon">
@@ -37,6 +44,10 @@ export const MainIcons = () => {
       <div className="menuIcon">
         <img src={diccionario} alt="Diccionario" />
         <span>辞書</span>
+      </div>
+      <div className="menuIcon">
+        <img src={folder} alt="Folder" />
+        <span>フォルダー</span>
       </div>
     </>
   );

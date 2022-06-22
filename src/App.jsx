@@ -4,6 +4,7 @@ import { Login } from "./components/Login/Login";
 import { Provider } from "react-redux";
 import store from "./store/index";
 import { Gallery } from "./components/Gallery/Gallery";
+import { Memrise } from "./components/Memrise/Memrise";
 function App() {
   return (
     <Provider store={store}>
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/gallery" element={<Gallery />} />
+          <Route path="/home/memrise" element={<Memrise />} />
         </Routes>
       </BrowserRouter>
     </Provider>
