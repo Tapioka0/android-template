@@ -22,6 +22,6 @@ export const cardSlice = createSlice({
 export default cardSlice.reducer;
 export const { addTargets } = cardSlice.actions;
 
-export const add = (data) => (dispatch) => {
+export const add = (data) => async (dispatch) => {
   dispatch(addTargets(data));
 };

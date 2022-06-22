@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { clientAxios } from "../../../config/clientAxios";
+import { tokenAuth } from "../../../config/tokenAuth";
 
 export const menuSlice = createSlice({
   name: "Menu",
@@ -21,25 +23,57 @@ export const menuSlice = createSlice({
       "https://cdn.discordapp.com/attachments/804448060397584394/987508848782880778/Screenshot_2022-06-14-00-17-11-460_com.vanced.android.youtube.jpg",
       "https://cdn.discordapp.com/attachments/804448060397584394/987508881351655424/Screenshot_2022-06-10-08-14-27-485_com.vanced.android.youtube.jpg",
     ],
+    login: false,
+    name: "",
   },
   reducers: {
     setBackground: (state, action) => {
       state.background = action.payload;
     },
 
-    setTest: (state, action) => {
-      state.test = action.payload;
+    setLogin: (state, action) => {
+      state.login = true;
+    },
+    setNoLogin: (state, action) => {
+      state.login = false;
+    },
+    setName: (state, action) => {
+      state.name = action.payload;
     },
   },
 });
 
 export default menuSlice.reducer;
-export const { setBackground, setTest } = menuSlice.actions;
+export const { setBackground, setLogin, setNoLogin, setName } =
+  menuSlice.actions;
 
 export const changeBackground = (background) => async (dispatch) => {
   dispatch(setBackground(background));
 };
 
-export const test = () => (dispatch) => {
-  dispatch(setTest(true));
+export const auth = (data) => async (dispatch) => {
+  try {
+    const response = await clientAxios.post("/api/auth", data);
+    sessionStorage.setItem("token", response.data.token);
+    dispatch(setLogin());
+  } catch (e) {
+    //  console.log(e);
+    sessionStorage.removeItem("token");
+    dispatch(setNoLogin());
+  }
+};
+
+export const getAuth = () => async (dispatch) => {
+  const token = sessionStorage.getItem("token");
+  if (token) tokenAuth(token);
+  try {
+    const response = await clientAxios("/api/auth");
+
+    dispatch(setLogin());
+    dispatch(setName(response.data.nombre));
+  } catch (e) {
+    // console.log(e);
+    sessionStorage.removeItem("token");
+    dispatch(setNoLogin());
+  }
 };
