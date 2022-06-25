@@ -37,11 +37,11 @@ export const Memrise = () => {
       {error ? <Error msg={msg} /> : null}
       <select className="form-control" name="categoria" onChange={setInfo}>
         <option value="">-- Selecciona -- </option>
-        <option value="anime">-- アニメ -- </option>
-        <option value="game">-- ゲーム -- </option>
-        <option value="Lectura">-- 小説/漫画 -- </option>
-        <option value="ramdon">-- ランダム -- </option>
-        <option value="kanjis solitos">-- Kanjis Solitos -- </option>
+        <option value="アニメ">-- アニメ -- </option>
+        <option value="ゲーム">-- ゲーム -- </option>
+        <option value="小説/漫画">-- 小説/漫画 -- </option>
+        <option value="ランダム">-- ランダム -- </option>
+        <option value="kanjisSolitos">-- Kanjis Solitos -- </option>
       </select>
 
       <label>漢字</label>
