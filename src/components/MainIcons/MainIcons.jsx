@@ -1,9 +1,9 @@
-import gallery from "../../icons/gallery.png";
-import diccionario from "../../icons/diccionario.png";
-import folder from "../../icons/folder.png";
-import music from "../../icons/music-note.png";
-import playStore from "../../icons/google-play.png";
-import memrise from "../../icons/memrise.png";
+import gallery from "../../assets/icons/gallery.png";
+import diccionario from "../../assets/icons/diccionario.png";
+import folder from "../../assets/icons/folder.png";
+import music from "../../assets/icons/music-note.png";
+import playStore from "../../assets/icons/google-play.png";
+import memrise from "../../assets/icons/memrise.png";
 import { useNavigate } from "react-router";
 export const MainIcons = () => {
   const navigate = useNavigate();

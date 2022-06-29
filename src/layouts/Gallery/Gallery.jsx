@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth } from "../../store/slices/Menu/Menu";
 import { GalleryStyle } from "../../styles/Gallery/GalleryStyle";
-import { BackBottom } from "../BottomBack/BackBottom";
+import { BackBottom } from "../../components/BottomBack/BackBottom";
 import { GalleryNavbar } from "./GalleryNavbar";
 import { useNavigate } from "react-router-dom";
 export const Gallery = () => {

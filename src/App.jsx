@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./components/home/Home";
-import { Login } from "./components/Login/Login";
+import { Home } from "./layouts/home/Home";
+import { Login } from "./layouts/Login/Login";
 import { Provider, useDispatch } from "react-redux";
 import store from "./store/index";
-import { Gallery } from "./components/Gallery/Gallery";
-import { Memrise } from "./components/Memrise/Memrise";
+import { Gallery } from "./layouts/Gallery/Gallery";
+import { Memrise } from "./layouts/Memrise/Memrise";
 import { tokenAuth } from "./config/tokenAuth";
 import { getAuth } from "./store/slices/Menu/Menu";
 

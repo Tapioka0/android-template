@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAlert } from "../../store/slices/Error/ErrorAlert";
-import { Error } from "../Error/Error";
+import { Error } from "../../components/Error/Error";
 import { auth, getAuth } from "../../store/slices/Menu/Menu";
 export const Login = () => {
   const dispatch = useDispatch();

@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeBackground, getAuth } from "../../store/slices/Menu/Menu";
 import { Container } from "../../styles/Home/stylesHome";
 
-import { Clock } from "../Clock/Clock";
-import { FooterIcon } from "../icons/FooterIcon";
-import { MainIcons } from "../MainIcons/MainIcons";
+import { Clock } from "../../components/Clock/Clock";
+import { FooterIcon } from "../../components/icons/FooterIcon";
+import { MainIcons } from "../../components/MainIcons/MainIcons";
 import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const dispatch = useDispatch();

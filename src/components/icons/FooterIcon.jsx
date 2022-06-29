@@ -1,7 +1,7 @@
-import call from "../../icons/llamada.png";
-import msg from "../../icons/msg.png";
-import chrome from "../../icons/chrome.png";
-import photo from "../../icons/photo.png";
+import call from "../../assets/icons/llamada.png";
+import msg from "../../assets/icons/msg.png";
+import chrome from "../../assets/icons/chrome.png";
+import photo from "../../assets/icons/photo.png";
 import { FooterIconStyle } from "../../styles/icons/FooterStyle";
 export const FooterIcon = () => {
   return (

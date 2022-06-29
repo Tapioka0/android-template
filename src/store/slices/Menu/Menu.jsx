@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import { clientAxios } from "../../../config/clientAxios";
 import { tokenAuth } from "../../../config/tokenAuth";
 
@@ -6,8 +7,7 @@ export const menuSlice = createSlice({
   name: "Menu",
 
   initialState: {
-    background:
-      "https://cdn.discordapp.com/attachments/804448060397584394/988611574539386980/1655773760631.jpg",
+    background: "https://th.wallhaven.cc/lg/72/72eo6y.jpg",
 
     gallery: [
       "https://cdn.discordapp.com/attachments/804448060397584394/987062321119629403/unknown.png",
@@ -47,8 +47,14 @@ export default menuSlice.reducer;
 export const { setBackground, setLogin, setNoLogin, setName } =
   menuSlice.actions;
 
-export const changeBackground = (background) => async (dispatch) => {
-  dispatch(setBackground(background));
+export const changeBackground = () => async (dispatch) => {
+  try {
+    const response = axios.get(
+      "https://wallhaven.cc/api/v1/search?categories=010&purity=001&resolutions=1280x720&sorting=random&apikey=ddfVZyPhJk3XLYEGe6k5ZKQL1NAEzh5k"
+    );
+
+    // dispatch(setBackground(background));
+  } catch (e) {}
 };
 
 export const auth = (data) => async (dispatch) => {

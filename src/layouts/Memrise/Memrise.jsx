@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { FormMemrise } from "../../styles/Memrise/MemriseStyles";
-import { BackBottom } from "../BottomBack/BackBottom";
+import { BackBottom } from "../../components/BottomBack/BackBottom";
 import { useDispatch, useSelector } from "react-redux";
 import { sendAlert } from "../../store/slices/Error/ErrorAlert";
-import { Error } from "../Error/Error";
+import { Error } from "../../components/Error/Error";
 import { add } from "../../store/slices/Cards/Cards";
 export const Memrise = () => {
   const dispatch = useDispatch();
