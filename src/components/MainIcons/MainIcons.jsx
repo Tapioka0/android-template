@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 export const MainIcons = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="container_icons">
       <div className="menuIcon">
         <img
           src={memrise}
@@ -49,6 +49,6 @@ export const MainIcons = () => {
         <img src={folder} alt="Folder" />
         <span>フォルダー</span>
       </div>
-    </>
+    </div>
   );
 };

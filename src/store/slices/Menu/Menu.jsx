@@ -7,7 +7,7 @@ export const menuSlice = createSlice({
   name: "Menu",
 
   initialState: {
-    background: "https://th.wallhaven.cc/lg/72/72eo6y.jpg",
+    background: "",
 
     gallery: [
       "https://cdn.discordapp.com/attachments/804448060397584394/987062321119629403/unknown.png",
@@ -49,12 +49,12 @@ export const { setBackground, setLogin, setNoLogin, setName } =
 
 export const changeBackground = () => async (dispatch) => {
   try {
-    const response = axios.get(
-      "https://wallhaven.cc/api/v1/search?categories=010&purity=001&resolutions=1280x720&sorting=random&apikey=ddfVZyPhJk3XLYEGe6k5ZKQL1NAEzh5k"
-    );
+    const response = await clientAxios("/api/extra/wallpaper");
 
-    // dispatch(setBackground(background));
-  } catch (e) {}
+    dispatch(setBackground(response.data.msg));
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const auth = (data) => async (dispatch) => {

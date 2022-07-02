@@ -11,23 +11,35 @@ import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const check = useSelector((state) => state.menu);
-  const { login } = check;
+  const { login, background } = check;
 
   useEffect(() => {
     dispatch(getAuth());
-    if (!login) navigate("/", { replace: true });
-  }, [login]);
 
+    if (!login) return navigate("/", { replace: true });
+  }, [login]);
+  useEffect(() => {
+    if (login) dispatch(changeBackground());
+  }, []);
   // all icon
 
-  return (
-    <Container>
-      <Clock />
-      <div className="containerIcons">
-        <MainIcons />
-        <FooterIcon />
+  return login ? (
+    <Container
+      background={
+        background
+          ? background
+          : "https://cdn.discordapp.com/attachments/850650775503765524/992515805797425244/unknown.png"
+      }
+    >
+      <div className="content">
+        <Clock />
+        <div className="containerIcons">
+          <MainIcons />
+          <FooterIcon />
+        </div>
       </div>
     </Container>
-  );
+  ) : null;
 };
