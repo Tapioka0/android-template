@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const FooterIconStyle = styled.div`
   display: flex;
-  margin: 5vh auto auto;
+  margin: 2vh auto auto;
+  justify-content: center;
 
   .space {
     display: block;

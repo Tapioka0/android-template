@@ -24,13 +24,11 @@ export const Home = () => {
     if (login) dispatch(changeBackground());
   }, []);
   // all icon
-
   return login ? (
     <Container
       background={
-        background
-          ? background
-          : "https://cdn.discordapp.com/attachments/850650775503765524/992515805797425244/unknown.png"
+        background ??
+        "https://cdn.discordapp.com/attachments/850650775503765524/992515805797425244/unknown.png"
       }
     >
       <div className="content">
