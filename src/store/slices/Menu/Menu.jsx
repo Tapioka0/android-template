@@ -50,8 +50,9 @@ export const changeBackground = () => async (dispatch) => {
 };
 
 export const uploadImgToGallery = (img) => async (dispatch) => {
+  console.log("subiendo....");
   try {
-    const response = await clientAxios.post("/api/extra/gallery", { src: img });
+    const response = await clientAxios.post("/api/extra/gallery", img, {});
 
     swal({
       title: "Sucess!",

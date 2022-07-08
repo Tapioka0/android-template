@@ -25,7 +25,7 @@ export const GalleryStyle = styled.div`
     object-fit: cover;
   }
   .date {
-    padding: 0 0 1vh 0;
+    padding: 1vh 0 1vh 0;
     color: wheat;
   }
   video {
@@ -49,21 +49,34 @@ export const GalleryStyle = styled.div`
     color: #fff;
   }
 
-  .alert-enter {
+  .ReactModal__Overlay {
     opacity: 0;
-    transform: scale(0.9);
+    transform: translateX(-100px);
+    transition: all 500ms ease-in-out;
   }
-  .alert-enter-active {
+
+  .ReactModal__Overlay--after-open {
     opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
+    transform: translateX(0px);
   }
-  .alert-exit {
-    opacity: 1;
-  }
-  .alert-exit-active {
+
+  .ReactModal__Overlay--before-close {
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 300ms, transform 300ms;
+    transform: translateX(-100px);
+  }
+
+  .dialog-enter {
+    left: -100%;
+    transition: left 300ms linear;
+  }
+  .dialog-enter-active {
+    left: 0;
+  }
+  .dialog-exit {
+    left: 0;
+    transition: left 300ms linear;
+  }
+  .dialog-exit-active {
+    left: -100%;
   }
 `;

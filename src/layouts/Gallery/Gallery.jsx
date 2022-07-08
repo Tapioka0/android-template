@@ -3,23 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAuth, getImgToGallery } from "../../store/slices/Menu/Menu";
 import { GalleryStyle } from "../../styles/Gallery/GalleryStyle";
 import { BackBottom } from "../../components/BottomBack/BackBottom";
-
 import { GalleryNavbar } from "./GalleryNavbar";
 import { useNavigate } from "react-router-dom";
 import { DropZones } from "../../components/DropFIle/DropFile";
 import { MediaModel } from "../../components/Modals/MediaModal";
 import { useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { v4 as uuidv4 } from "uuid";
+
+import { motion } from "framer-motion";
 export const Gallery = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState("");
-  const [inProp, setInProp] = useState(false);
+  const [fecha, setFecha] = useState("");
   const openModal = () => {
     setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
   };
   const { gallery } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
@@ -34,14 +31,11 @@ export const Gallery = () => {
     if (login && gallery[0] == undefined) dispatch(getImgToGallery());
   }, [gallery]);
 
-  const fechas = (data, index) => {
-    const date = new Date(data.fecha);
-
-    const oldDate = date.toLocaleDateString("en-US");
-
-    const DateNow = new Date().toLocaleDateString("en-US");
-
-    if (DateNow === oldDate) return <p>今日</p>;
+  const varians = {
+    si: {
+      scale: 4,
+      transition: { duration: 3 },
+    },
   };
 
   return (
@@ -52,26 +46,45 @@ export const Gallery = () => {
         {gallery
           ? gallery.map((data, indexx) => (
               <>
-                <div className="date" key={indexx + 1}>
+                <div className="date" key={uuidv4()}>
                   <h3>{new Date(data.date).toLocaleDateString("en-US")}</h3>
                 </div>
                 <div className="listImagenes">
                   {data.imgs.map((img, index) =>
                     img.includes(".mp4") ? (
-                      <div className="imagen" key={index}>
-                        <video src={img} controls />
-                      </div>
-                    ) : (
                       <div
                         className="imagen"
+                        key={uuidv4()}
                         onClick={() => {
                           openModal();
-
                           setImage(img);
                         }}
                       >
-                        <img src={img} alt="imagen" className="imagen"></img>
+                        <video src={img} />
                       </div>
+                    ) : (
+                      <motion.div
+                        whileTap={{
+                          scale: 6,
+                          opacity: 1,
+                          zIndex: 10,
+                        }}
+                        key={uuidv4()}
+                      >
+                        <div
+                          className="imagen"
+                          onClick={(e) => {
+                            openModal();
+                            setImage(img);
+                            setFecha(
+                              new Date(data.date).toLocaleDateString("en-US")
+                            );
+                          }}
+                          id={uuidv4()}
+                        >
+                          <img src={img} alt="imagen" className="imagen"></img>
+                        </div>
+                      </motion.div>
                     )
                   )}
                 </div>
@@ -80,7 +93,12 @@ export const Gallery = () => {
           : null}
       </>
 
-      <MediaModel setIsOpen={setIsOpen} img={image} modalIsOpen={modalIsOpen} />
+      <MediaModel
+        setIsOpen={setIsOpen}
+        img={image}
+        modalIsOpen={modalIsOpen}
+        fecha={fecha}
+      />
 
       {/* <BackBottom /> */}
     </GalleryStyle>

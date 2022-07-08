@@ -8,12 +8,13 @@ export const DropZones = () => {
     <Dropzone
       onDrop={(file) => {
         let reader = new FileReader();
+
         reader.readAsDataURL(file[0]);
         reader.onload = () => {
-          const baseURL = reader.result;
-          // console.log(baseURL);
-
-          dispatch(uploadImgToGallery(baseURL));
+          const data = new FormData();
+          data.append("file", file[0]);
+          console.log(data);
+          dispatch(uploadImgToGallery(data));
         };
       }}
     >
